@@ -1,4 +1,5 @@
 "use client";
+import SocialLinks from '@/app/(shared)/SocialLinks';
 import { FormattedPost } from '@/app/types';
 import {XMarkIcon, PencilSquareIcon} from '@heroicons/react/24/solid'
 import Image from 'next/image';
@@ -75,7 +76,23 @@ const Content = ( {post }: Props) => {
             style={{ objectFit:'cover'}}
             />
         </div>
+
+        {/* SUBMIT BUTTON */}
+        {isEditable && (
+            <div className='flex justify-end'>
+                <button
+                type="submit"
+                className='bg-accent-red hover:bg-wh-500 text-wh-10 font-semibold py-2 px-5 mt-5'
+                >SUBMIT
+                </button>
+            </div>
+        )}
     </form>
+
+    {/* SOCIAL LINKS */}
+    <div className='hidden md:block mt-10 w-1/3'>
+        <SocialLinks isDark />
+    </div>
   </div>
   
 }
