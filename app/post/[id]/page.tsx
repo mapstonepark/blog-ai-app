@@ -1,8 +1,9 @@
 import React from 'react'
-import { prisma } from '../api/hello/client'
+import { prisma } from '../../api/hello/client'
 import { Post as PostType} from '@prisma/client'
-import { FormattedPost } from '../types'
-import Sidebar from '../(shared)/Sidebar'
+import { FormattedPost } from '../../types'
+import Sidebar from '../../(shared)/Sidebar'
+import Content from './Content'
 
 type Props = {
     params: { id: string}
@@ -32,13 +33,12 @@ const getPost = async (id: string)  => {
 const Post = async ({params}: Props) => {
     const { id } = params;
     const post: FormattedPost | null = await getPost(id)
-    console.log('post:', post)
   return (
     <main className="px-10 leading-7">
       
       <div className="md:flex gap-10 mb-5">
         <div className="basis-3/4">
-            {/* <Content /> */}
+            <Content post={post} />
         </div>
         <div className="basis-1/4">
           <Sidebar />
